@@ -16,7 +16,7 @@ public class CPSC112_Assignment3 {
     isGameOver("1432");
   }
 
-  public static void remakeMySecret() {
+	public static void remakeMySecret() {
 
 		int n1=r.nextInt(7) + 1;
 		int n2=r.nextInt(7) + 1;
@@ -92,30 +92,50 @@ public class CPSC112_Assignment3 {
 
 		}
 
-		if (w==true){
-			for(int k=0; k<4; k++){
+		 if(Integer.parseInt(input)>highestGuess){
+			highestGuess=Integer.parseInt(input);
+			//System.out.println(highestGuess);
+			//System.out.println(exceptions);
+			//exceptions=exceptions-1;
+			
+			if (exceptions<=0&&Integer.parseInt(mySecret)<Integer.parseInt(input)){
+				return false;
+			}
 
-				if (mySecret.charAt(k)==input.charAt(k)){
-					numberCorrect++;
-				}
-				for(int l=0;l<4;l++){
-					if (mySecret.charAt(k)==input.charAt(l)){
-						numberPresent++;
-					}
-				}
-			}
-			if(numberPresent==4&&numberCorrect==4){
-				System.out.print("You won!");
-				return true;
-			}
 		}
+		for(int k=0; k<4; k++){
+
+			if (mySecret.charAt(k)==input.charAt(k)){
+				numberCorrect++;
+			}
+			for(int l=0;l<4;l++){
+				if (mySecret.charAt(k)==input.charAt(l)){
+					numberPresent++;
+				}
+				
+			}
+			
+		}
+		if (Integer.parseInt(input)<highestGuess){
+			exceptions=exceptions-1;
+		System.out.println("Your guess was lower than allowed. You have "+exceptions+ " exceptions remaining."); 
+		}
+		if(numberPresent==4&&numberCorrect==4){
+			System.out.println("You won!");
+			return true;
+		}
+
 		if(numberPresent<4||numberCorrect<4){
 			System.out.println(numberPresent+","+numberCorrect);
 			return false;
 		}
-		return true;
-	} 
 
+		return true;
+
+
+	}
+	
 }
+
 
 
