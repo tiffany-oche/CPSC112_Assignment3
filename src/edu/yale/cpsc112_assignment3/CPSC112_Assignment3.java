@@ -81,6 +81,41 @@ public class CPSC112_Assignment3 {
 		return true;
 	}
 
+	//-----------------------------------------------------------------------------------------
+	public static boolean isGameOver(String input) {
+		// Parts 3 and 4 code goes here
+		int numberCorrect=0;
+		int numberPresent=0;
+		boolean w=isGuessValid(input);
+		if (w==false){
+			return false;
 
+		}
+
+		if (w==true){
+			for(int k=0; k<4; k++){
+
+				if (mySecret.charAt(k)==input.charAt(k)){
+					numberCorrect++;
+				}
+				for(int l=0;l<4;l++){
+					if (mySecret.charAt(k)==input.charAt(l)){
+						numberPresent++;
+					}
+				}
+			}
+			if(numberPresent==4&&numberCorrect==4){
+				System.out.print("You won!");
+				return true;
+			}
+		}
+		if(numberPresent<4||numberCorrect<4){
+			System.out.println(numberPresent+","+numberCorrect);
+			return false;
+		}
+		return true;
+	} 
+
+}
 
 
