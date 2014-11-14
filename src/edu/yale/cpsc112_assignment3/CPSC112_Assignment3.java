@@ -53,3 +53,34 @@ public class CPSC112_Assignment3 {
 		}
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	public static boolean isGuessValid(String input) {
+		int inputLength=input.length();
+
+		if (inputLength!=4){
+			System.out.print("Input must be a 4-digit number with digits between 1 and 7.");
+			return false;
+		}
+		for(int i=0;i<4;i++){
+
+			if (input.charAt(i)!='7'&&input.charAt(i)!='6'&&input.charAt(i)!='5'&&input.charAt(i)!='4'&&input.charAt(i)!='3'&&input.charAt(i)!='2'&&input.charAt(i)!='1'){
+				System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+				return false;
+			}
+
+			for(int j=i+1; j<inputLength; j++){
+
+				if(input.charAt(i)==input.charAt(j)){
+					System.out.print("Input must be a 4-digit number with digits between 1 and 7.");
+					return false;
+				}
+			}
+
+		}
+		return true;
+	}
+
+
+
+
